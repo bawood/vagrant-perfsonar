@@ -7,6 +7,10 @@
       yum:
         name: https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm
         state: present
+    - name: install epel repo
+      yum:
+        name: http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
     - name: upgrade all packages, excluding kernel & foo related packages
       yum:
         name: '*'
@@ -20,3 +24,5 @@
        - make
        - which
        - postgresql95-server
+       - python-virtualenv
+       - python-virtualenvwrapper
