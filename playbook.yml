@@ -3,15 +3,15 @@
   remote_user: root
   become: yes
   tasks:
-    - name: install postgresql repo
+    - name: install extra repos
       yum:
-        name: https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm
+        name: "{{ item }}"
         state: present
-    - name: install epel repo
-      yum:
-        name: http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        state: present
-    - name: upgrade all packages, excluding kernel & foo related packages
+      with_items:
+         - http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+         - http://software.internet2.edu/rpms/el7/x86_64/main/RPMS/Internet2-repo-0.7-1.noarch.rpm
+         - https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-2.noarch.rpm
+    - name: upgrade all packages, excluding kernel related packages
       yum:
         name: '*'
         state: latest
@@ -23,6 +23,9 @@
        - m4
        - make
        - which
+       - postgresql-devel
        - postgresql95-server
+       - postgresql95
+       - python-devel
        - python-virtualenv
        - python-virtualenvwrapper
