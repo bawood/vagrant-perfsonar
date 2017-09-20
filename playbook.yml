@@ -22,10 +22,9 @@
        - git
        - m4
        - make
+       - ntp
        - which
-       - postgresql-devel
-       - postgresql95-server
-       - postgresql95
        - python-devel
        - python-virtualenv
        - python-virtualenvwrapper
+       - vim
