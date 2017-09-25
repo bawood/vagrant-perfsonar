@@ -28,3 +28,12 @@
        - python-virtualenv
        - python-virtualenvwrapper
        - vim
+    - name: build and install pscheduler (this could take a few minutes, watch build.log in host source dir for progress)
+      command: make fresh
+      args:
+          chdir: /perfsonar/pscheduler
+          creates: /perfsonar/pscheduler/build.log
+    - name: restart pscheduler-runner
+      service:
+          name: pscheduler-runner
+          state: restarted
