@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   # config.vm.provision "shell", path: "system-prep"
    config.vm.provision "ansible" do |ansible|
-       ansible.verbose = "v"
+       #ansible.verbose = "v"
        ansible.playbook = "playbook.yml"
    end
 end
